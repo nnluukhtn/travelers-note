@@ -51,6 +51,10 @@ var Destination = React.createClass({
     PubSub.publish('destinationRemoved', this.state.visited);
   },
 
+  componentWillReceiveProps: function(newProps) {
+    this.setState({visited: newProps.visited});
+  },
+
   render: function() {
     var visited = this.state.visited;
     var labelClasses = 'list-check-field' + (visited ? ' list-check-field-checked' : '');
