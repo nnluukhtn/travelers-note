@@ -1,0 +1,2 @@
+<%= react_component('Header', {travelerName: session[:user]['name'], logout_path: logout_path}, { prerender: true }) %>
+<%= react_component('Travelers', {travelers: @travelers, currentTraveler: session[:user]['name'], find_wishlist_city_path: find_wishlist_city_path, update_destinations_path: update_destinations_path}, { prerender: true }) %>

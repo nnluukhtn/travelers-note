@@ -1,0 +1,14 @@
+development: &defaults
+  api_url: 'https://young-beyond-8772.herokuapp.com'
+  auth_api_path: "/auth"
+  travelers_api_path: '/travelers'
+  cities_api_url: 'http://gd.geobytes.com/AutoCompleteCity'
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
