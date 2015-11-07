@@ -5,6 +5,13 @@ machine:
     version:
       2.2.3
 
+  # Add some environment variables
+  environment:
+    CIRCLE_ENV: test
+    DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
+    secret_token: 59e26402cddf83d06d6f950409618d956a7cd0245ca51d4a27b7b0f86353e44722c50544464982bc35d855411cf443351d6d4abedfe1a1e302e446e8343b8741
+    secret_key_base: 59e26402cddf83d06d6f950409618d956a7cd0245ca51d4a27b7b0f86353e44722c50544464982bc35d855411cf443351d6d4abedfe1a1e302e446e8343b8741
+
 ## Customize test commands
 test:
   post:
