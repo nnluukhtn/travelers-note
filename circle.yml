@@ -9,20 +9,17 @@ machine:
   environment:
     CIRCLE_ENV: test
     DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
-    secret_token: 59e26402cddf83d06d6f950409618d956a7cd0245ca51d4a27b7b0f86353e44722c50544464982bc35d855411cf443351d6d4abedfe1a1e302e446e8343b8741
-    secret_key_base: 59e26402cddf83d06d6f950409618d956a7cd0245ca51d4a27b7b0f86353e44722c50544464982bc35d855411cf443351d6d4abedfe1a1e302e446e8343b8741
 
-## Customize test commands
-test:
+dependencies:
   post:
-    - bundle exec rake jasmine:ci: # add an extra test type
-        environment:
-          RAILS_ENV: test
-          RACK_ENV: test
-    - bundle exec rspec: # add an extra test type
-        environment:
-          RAILS_ENV: test
-          RACK_ENV: test
+    - bundle exec rake assets:precompile
+
+## Customize database setup
+database:
+  override:
+    # replace Circle's generated database.yml
+    - cp config/database.yml.ci config/database.yml
+    - bundle exec rake db:create db:schema:load --trace
 
 ## Customize deployment commands
 deployment:
